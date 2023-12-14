@@ -24,6 +24,12 @@ class CreateAccount: UIViewController {
         
     }
     
+    @IBAction func orderSimClicked(_ sender: UIButton) {
+        
+        
+        let ordersimController = storyboard?.instantiateViewController(identifier: "ordersimid") as! OrderSimViewController
+        self.navigationController?.pushViewController(ordersimController, animated: true)
+    }
     @IBAction func loginButtonPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

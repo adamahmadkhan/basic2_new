@@ -18,7 +18,7 @@ class TopUpScreenViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionViewOutlet.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        self.collectionViewOutlet.register(UINib(nibName: "TopUpCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         
        
         
@@ -30,10 +30,13 @@ class TopUpScreenViewController: UIViewController, UICollectionViewDelegate, UIC
         prices.count
     }
     
+    /*func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    } */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        let cell = collectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MyCollectionViewCell
+        let cell = collectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! TopUpCollectionVIewCellController
         
         cell.priceLabelOutlet.text = prices[indexPath.row]
         
@@ -48,12 +51,11 @@ class TopUpScreenViewController: UIViewController, UICollectionViewDelegate, UIC
         return cell
     }
     
-    
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
         {
-            let width  = (view.frame.width-60)/2
-            return CGSize(width: width, height: width/2.0)
+            let width  = (view.frame.width-50)/2
+            return CGSize(width: width, height: width/1.8)
         }
     
     
@@ -61,18 +63,19 @@ class TopUpScreenViewController: UIViewController, UICollectionViewDelegate, UIC
     
         for i in prices.indices {
                 let cellIndexPath = IndexPath(item: i, section: indexPath.section)
-                let cell = collectionView.cellForItem(at: cellIndexPath) as! MyCollectionViewCell
+                let cell = collectionView.cellForItem(at: cellIndexPath) as! TopUpCollectionVIewCellController
                 cell.choosenSymbolOutlet.isHidden = true
             cell.blueSelectedBoarderOutlet.isHidden = true
                 
             }
         
-        let cell = collectionView.cellForItem(at: indexPath) as! MyCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! TopUpCollectionVIewCellController
         cell.choosenSymbolOutlet.isHidden = !cell.choosenSymbolOutlet.isHidden
         cell.blueSelectedBoarderOutlet.isHidden = !cell.blueSelectedBoarderOutlet.isHidden 
         
     }
     
+        
     @IBAction func ContinueButton(_ sender: UIButton) {
         
         let paymentMethod = self.storyboard?.instantiateViewController(withIdentifier: "paymentMethodID") as! PaymentMethodViewController

@@ -29,9 +29,9 @@ class MoreDataScreenController: UIViewController {
         subjectLabelOutlet.text = recievedData.subject
         //print("HI \(FetchData.pointer)")
         // second way
-        secondWayDateLabelOutlet.text = fetchData.data[FetchData.pointer].dates
-        secondWaySubjectOutlet.text = fetchData.data[FetchData.pointer].subject
-        secondWayMainMessage.text = fetchData.data[FetchData.pointer].message
+        //secondWayDateLabelOutlet.text = fetchData.data[FetchData.pointer].dates
+        //secondWaySubjectOutlet.text = fetchData.data[FetchData.pointer].subject
+        //secondWayMainMessage.text = fetchData.data[FetchData.pointer].message
         
         
         

@@ -16,13 +16,13 @@ class whatsNewViewController: UIViewController,UITableViewDataSource,UITableView
     
     public var message: [String] = ["We're excited to share that 5G connectivity is now available to all Talk Home Custimers at no additional Cost", "Worried about the mid-contract price hikes from the big 4g world? Talk home is now offering free 4G calls"]
     */
-    
+    var counter:Int = 0
     var obj = [Tabledata]()
     @IBOutlet weak var tableViewOutlet: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableViewOutlet.register(UINib(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier: "mycellxib")
+        self.tableViewOutlet.register(UINib(nibName: "whatsNewCell", bundle: nil), forCellReuseIdentifier: "mycellxib")
     }
     
     
@@ -41,20 +41,42 @@ class whatsNewViewController: UIViewController,UITableViewDataSource,UITableView
         obj.append(Tabledata(dates: "7 April,2023", subject: "#Go beyond - Bringing 5G To Talk Home", message: "We're excited to share that 5G connectivity is now available to all Talk Home Custimers at no additional Cost"))
         
         obj.append(Tabledata(dates: "30 March,2023", subject: "No annual Price hikes on Talk Home", message: "Worried about the mid-contract price hikes from the big 4g world? \n Talk home is now offering free 4G calls"))
+        
+        obj.append(Tabledata(dates: "9 June,2023", subject: "#Go beyond - Bringing 5G To Talk Home", message: "We're excited to share that 5G connectivity is now available to all Talk Home Custimers at no additional Cost"))
+        
+        obj.append(Tabledata(dates: "17 July,2023", subject: "No annual Price hikes on Talk Home", message: "Worried about the mid-contract price hikes from the big 4g world? \n Talk home is now offering free 4G calls"))
+        
+        obj.append(Tabledata(dates: "27 Aug,2023", subject: "#Go beyond - Bringing 5G To Talk Home", message: "We're excited to share that 5G connectivity is now available to all Talk Home Custimers at no additional Cost"))
+        
+        obj.append(Tabledata(dates: "11 September,2023", subject: "No annual Price hikes on Talk Home", message: "Worried about the mid-contract price hikes from the big 4g world? \n Talk home is now offering free 4G calls"))
+        
+        obj.append(Tabledata(dates: "9 Oct,2023", subject: "#Go beyond - Bringing 5G To Talk Home", message: "We're excited to share that 5G connectivity is now available to all Talk Home Custimers at no additional Cost"))
+        
+        obj.append(Tabledata(dates: "11 Nov,2023", subject: "No annual Price hikes on Talk Home", message: "Worried about the mid-contract price hikes from the big 4g world? \n Talk home is now offering free 4G calls"))
+        
+        obj.append(Tabledata(dates: "19 Dec,2023", subject: "No annual Price hikes on Talk Home", message: "Worried about the mid-contract price hikes from the big 4g world? \n Talk home is now offering free 4G calls"))
     }
     
-    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Header no \(section)"
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return obj.count
+        return 3
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewOutlet.dequeueReusableCell(withIdentifier: "mycellxib") as! NewTableViewCell
         cell.imageOutlet.image = UIImage(named: "talkhome")
-        cell.dateLabelOutlet?.text = obj[indexPath.row].dates
+        cell.dateLabelOutlet?.text = obj[indexPath.item].dates
         cell.subjectLabelOutelet?.text = obj[indexPath.row].subject
         cell.messageLabelOutlet?.text = obj[indexPath.row].message
+       
         return  cell
         
     }
